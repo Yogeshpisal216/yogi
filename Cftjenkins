@@ -1,0 +1,23 @@
+pipeline {
+    agent { 
+        label 'My_node' 
+        }
+    stages {
+        stage('git pull') {
+            steps {
+                echo 'welcome'
+                git 'https://github.com/Yogeshpisal216/My_repo.git'
+                  }
+             }
+        stage('CLI TO CFT') {
+            steps {
+                sh '''
+                 echo 'added artifacts in bucket'
+                 sudo apt install awscli -y
+                 aws cloudformation create-stack --stack-name Yogesh --template-body file:///home/ubuntu/workspace/My_project/My_repo/ec2.yml --region us-west-2
+                 '''
+                
+            }
+        }
+    }
+}
