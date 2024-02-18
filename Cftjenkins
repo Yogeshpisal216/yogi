@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('git pull') {
             steps {
-                echo 'welcome to cftpipleine'
+                echo 'welcome to cftpipleine joker is here'
                 git 'https://github.com/Yogeshpisal216/My_repo.git'
                   }
              }
